@@ -1,18 +1,17 @@
-# Pybo
+# multicampus_interface_project
 
-### Django로 만드는 Q&A 시스템
+유튜브를 참조한 간단한 영상공유 사이트 만들기
 
-**주요기능**
+가상환경 적용폴더: colsite
+django version == 3.1.3
+pip version == 21.2.4
 
-- Django 라이브러리
-- Bootstrap4 디자인
-  - djnago-bootstrap4
-  - 반응형 웹
-- 웹 에디터
+branch : JOO-WON-JANG
 
-[장고 홈페이지](https://docs.djangoproject.com/ko/4.1/intro/)
-
-```
-django-admin startproject config .
-django-admin startapp pybo
-```
+코드변경 후 git에 적용하기기
+cd C:\data\project\multicampus_interface_project>
+git checkout JOO-WON-JANG
+git pull
+git add .
+git commit -m "message"
+git push
