@@ -18,8 +18,8 @@ def video_new(request):
     if request.method =='POST':
         title = request.POST['title']
         video_key = request.POST['video_key']
-        Video.objects.create(titie=title, video_key=video_key )
-        return redirect('video:list')
+        Video.objects.create(title=title, video_key=video_key )
+        return redirect('streaming:list')
     elif request.method == 'GET':
         return render(request, 'streaming/video_new.html')
     

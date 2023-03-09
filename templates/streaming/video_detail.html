@@ -1,5 +1,7 @@
+{% include 'base.html'%}
 {% load static %}
 
+{% block content %}
 <html>
 <head>
     <title>Video Detail</title>
@@ -9,11 +11,26 @@
 <body>
 <div class="content container">
     <header class="page-header">
-        <h1>Video Detail</h1>
+        <h1>{{ video.title }}</h1>
     </header>
     <div class="row">
         <div class="col-md-16">
             <div id="player"></div>
+        </div>
+    </div>
+</div>
+<div class="content container">
+    <header class="page-header" style="overflow: auto;">
+        <h1 style="display: inline;">Video List</h1>
+        <a class="btn btn-default" href="new/" style="float: right;">New Video</a>
+    </header>
+    <div class="row">
+        <div class="col-md-12">
+            {% for video in video_list %}
+                <a href="/streaming/{{ video.id }}">
+                    <h4>{{ video.title }}</h4>
+                </a>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -31,4 +48,9 @@
         });
     }
 </script>
+
 </html>
+{% endblock%}
+
+
+
