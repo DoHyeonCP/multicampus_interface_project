@@ -4,5 +4,5 @@ from django.db import models
 
 class Video(models.Model):
     title = models.CharField(max_length = 200, default = '')
-    video_key = models.CharField(max_length = 12)
+    videofile = models.FileField(null = True, upload_to ="", blank = True )
     

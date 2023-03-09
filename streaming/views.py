@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Video
+from .forms import VideoUploadForm
 # Create your views here.
 
 def video_list(request):
@@ -11,18 +12,6 @@ def video_list(request):
 
     return render(request, 'streaming/video_list.html', context)
 
-def video_new(request):
-    """
-    비디오 추가
-    """
-    if request.method =='POST':
-        title = request.POST['title']
-        video_key = request.POST['video_key']
-        Video.objects.create(title=title, video_key=video_key )
-        return redirect('streaming:list')
-    elif request.method == 'GET':
-        return render(request, 'streaming/video_new.html')
-    
 def video_detail(request, video_id):
     """
     비디오 출력
@@ -30,3 +19,25 @@ def video_detail(request, video_id):
     video = Video.objects.get(id = video_id)
     context = {'video': video}
     return render(request, 'streaming/video_detail.html', context)
+
+def video_upload(request):
+    """
+    비디오 추가
+    """
+    if request.method =='POST':
+        title = request.POST['title']
+        videofile = request.FILES['videofile']
+        fileupload = Video(
+            title = title,
+            videofile = videofile, 
+        )
+        fileupload.save()
+        return redirect('streaming:video_upload')
+    else:
+        fileuploadForm = VideoUploadForm
+        context = {
+            'fileuploadForm':fileuploadForm,
+        }
+        return render(request, 'streaming/video_upload.html',context)
+    
+

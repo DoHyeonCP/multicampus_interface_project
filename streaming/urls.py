@@ -6,6 +6,6 @@ app_name = 'streaming'
 
 urlpatterns = [
     path('', views.video_list, name = 'list'),
-    path('new/', views.video_new, name = 'new'),
-    path('<int:video_id>', views.video_detail, name = 'detail')
-]
+    path('<int:video_id>', views.video_detail, name = 'detail'),
+    path('video_upload/', views.video_upload, name = 'video_upload'),
+] 
