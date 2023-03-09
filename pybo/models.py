@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Question(models.Model):
+
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_question')
     subject = models.CharField('제목', max_length=200,
                                help_text='질문의 제목을 한 줄로 작성하세요.')
@@ -10,11 +11,17 @@ class Question(models.Model):
     modify_date = models.DateTimeField(null=True, blank=True)
 
     voter = models.ManyToManyField(User, related_name='voter_question')
+
     
     
     
     def __str__(self):
         return f'{self.id} {self.subject}'
+    
+# class Post(models.Model):
+#     user =models.OneToOneField(User, on_delete=models.CASCADE)
+#     like_count=models.PositiveBigIntegerField(default=0)
+
 
 
 class Answer(models.Model):

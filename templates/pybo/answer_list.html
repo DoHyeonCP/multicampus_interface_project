@@ -13,7 +13,6 @@
       <div class="bg-light text-center p-3 border font-weight-bolder mb-1">
         {{answer.voter.count}}</div>
       <a href="{% url 'pybo:vote_answer' answer.id  %}" data-uri="{% url 'pybo:vote_answer' answer.id  %}" class="recommend btn btn-sm btn-secondary btn-block my-1">
-        {% has_vote answer user %}
         추천
       </a>
     </div>

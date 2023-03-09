@@ -25,13 +25,11 @@
       <div class="bg-light text-center p-3 border font-weight-bolder mb-1">
         {{question.voter.count}}</div>
       <a href="{% url 'pybo:vote_question' question.id  %}" data-uri="{% url 'pybo:vote_question' question.id  %}" class="recommend btn btn-sm btn-secondary btn-block my-1">
-        {% comment %} {% has_vote question user %} {% endcomment %}
-        {% if voted %}
-        <i class="fa-solid fa-heart text-danger"></i>
+        {% if request.user in question.voter.all %}
+          <i class="fa-solid fa-heart"></i>
         {% else %}
-        <i class="fa-regular fa-heart  text-danger"></i>
+          <i class="fa-regular fa-heart"></i>
         {% endif %}
-        추천
       </a>
     </div>
 
