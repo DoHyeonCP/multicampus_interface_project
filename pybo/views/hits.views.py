@@ -1,3 +1,4 @@
+
 def detail(request, id):
     detail_data = get_object_or_404(Book, pk = id)
     comments = Comment.objects.filter(book_id=id, comment_id__isnull=True)
