@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load static %}
 
   <head>
     <meta charset="UTF-8"/>
@@ -7,34 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>스트리밍</title>
     <link rel="icon" href="https://www.youtube.com/s/desktop/4ede54fa/img/favicon_32x32.png">
-    <link rel="stylesheet" href="index.css"/>
+    <link rel="stylesheet" href={% static 'index.css' %}/>
     <style>
-      #right {
-        display: flex;
-        height: 55px;
-        justify-content: center;
-      }
-
-      #right svg {
-        margin-top: 30px;
-      }
-
-      #right button {
-        border: 1px solid red;
-        width: 70px;
-        cursor: pointer;
-        background-color: white;
-        border-color: blue;
-        color: blue;
-      }
-
-      #right h4 {
-        margin: auto;
-      }
+      <div>
+        <button onclick="Register()">Create an Account</button>
+        <form action=""><input type="text" id="login-username" placeholder="username"><input type="text" id="login-password" placeholder="password"></form>
+        <button onclick="Login()">Login</button>
+      </div>#right { display: flex; height: 55px; justify-content: center; } #right svg { margin-top: 30px; } #right button { border: 1px solid red; width: 70px; cursor: pointer; background-color: white; border-color: blue; color: blue; } #right h4 { margin: auto; }
     </style>
   </head>
 
   <body>
+    <div>
+      <button onclick="Register()">Create an Account</button>
+      <form action="">
+        <input type="text" id="login-username" placeholder="username">
+        <input type="text" id="login-password" placeholder="password">
+
+      </form>
+      <button onclick="Login()">Login</button>
+    </div>
     <div id="navbar"></div>
     <div id="both">
       <div id="icon_bar">
@@ -74,16 +67,6 @@
             </g>
           </svg>
           <p>Subscriptions</p>
-        </div>
-
-        <div>
-          <button onclick="Register()">Create an Account</button>
-          <form action="">
-            <input type="text" id="login-username" placeholder="username">
-            <input type="text" id="login-password" placeholder="password">
-
-          </form>
-          <button onclick="Login()">Login</button>
         </div>
 
         <hr>
@@ -159,6 +142,6 @@
 
   </div>
 </body>
-<script src="indexL.js" type="module"></script>
+<script src={% static "indexL.js" %} type="module"></script>
 
 </html>

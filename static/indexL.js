@@ -4,9 +4,7 @@ window.addEventListener("load", popular);
 
 async function popular() {
   try {
-    res = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=20&key=${API_KEY}`
-    );
+    res = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=20&key=${API_KEY}`);
     const data = await res.json();
     const actual_data = data.items;
     console.log(data);
@@ -16,15 +14,13 @@ async function popular() {
   }
 }
 
-document.getElementById("s").addEventListener("click",function(){
+document.getElementById("s").addEventListener("click", function () {
   searchVideos();
-})
+});
 const searchVideos = async () => {
   try {
     let query = document.getElementById("query").value;
-    const res = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${query}&key=${API_KEY}`
-    );
+    const res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${query}&key=${API_KEY}`);
     const data = await res.json();
     const actual_data = data.items;
     appendVideos(actual_data);
@@ -34,10 +30,10 @@ const searchVideos = async () => {
   }
 };
 
-const appendVideos = (data) => {
+const appendVideos = data => {
   document.getElementById("container").innerHTML = null;
 
-  data.forEach(({ snippet, id }) => {
+  data.forEach(({snippet, id}) => {
     const title = snippet.title;
     const videoId = id.videoId || id;
     const thumbnail = snippet.thumbnails.high.url;
@@ -49,7 +45,7 @@ const appendVideos = (data) => {
       let data = {
         videoId,
         snippet,
-        domain:document.domain,
+        domain: document.domain
       };
       localStorage.setItem("clicked_item", JSON.stringify(data));
       window.location.href = "video.html";
@@ -77,19 +73,17 @@ const appendVideos = (data) => {
   });
 };
 
-
-document.getElementById("l").addEventListener("click",function(){
+document.getElementById("l").addEventListener("click", function () {
   signin();
-})
+});
+
 function signin() {
   window.location.href = "auth.html";
 }
 
 async function categor() {
   try {
-    res = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=gaming&key=${API_KEY}`
-    );
+    res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=gaming&key=${API_KEY}`);
     const data = await res.json();
     const actual_data = data.items;
     console.log(data);
@@ -101,9 +95,7 @@ async function categor() {
 
 async function catego() {
   try {
-    res = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=live&key=${API_KEY}`
-    );
+    res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=live&key=${API_KEY}`);
     const data = await res.json();
     const actual_data = data.items;
     console.log(data);
@@ -115,9 +107,7 @@ async function catego() {
 
 async function categ() {
   try {
-    res = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=music&key=${API_KEY}`
-    );
+    res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=music&key=${API_KEY}`);
     const data = await res.json();
     const actual_data = data.items;
     console.log(data);
@@ -129,9 +119,7 @@ async function categ() {
 
 async function cate() {
   try {
-    res = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=sports&key=${API_KEY}`
-    );
+    res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=sports&key=${API_KEY}`);
     const data = await res.json();
     const actual_data = data.items;
     console.log(data);
@@ -143,9 +131,7 @@ async function cate() {
 
 async function cat() {
   try {
-    res = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=news&key=${API_KEY}`
-    );
+    res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=news&key=${API_KEY}`);
     const data = await res.json();
     const actual_data = data.items;
     console.log(data);
@@ -157,9 +143,7 @@ async function cat() {
 
 async function ca() {
   try {
-    res = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=learning&key=${API_KEY}`
-    );
+    res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=learning&key=${API_KEY}`);
     const data = await res.json();
     const actual_data = data.items;
     console.log(data);
@@ -169,19 +153,17 @@ async function ca() {
   }
 }
 
-document.getElementById("z").addEventListener("click",function(){
+document.getElementById("z").addEventListener("click", function () {
   explore();
-})
+});
 
-document.getElementById("x").addEventListener("click",function(){
+document.getElementById("x").addEventListener("click", function () {
   shorts();
-})
+});
 
 async function explore() {
   try {
-    res = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=new&key=${API_KEY}`
-    );
+    res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=new&key=${API_KEY}`);
     const data = await res.json();
     const actual_data = data.items;
     console.log(data);
@@ -193,9 +175,7 @@ async function explore() {
 
 async function shorts() {
   try {
-    res = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=shorts&key=${API_KEY}`
-    );
+    res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=shorts&key=${API_KEY}`);
     const data = await res.json();
     const actual_data = data.items;
     console.log(data);
@@ -205,49 +185,49 @@ async function shorts() {
   }
 }
 
-document.getElementById("c").addEventListener("click",function(){
+document.getElementById("c").addEventListener("click", function () {
   alerts();
-})
+});
 
-document.getElementById("v").addEventListener("click",function(){
+document.getElementById("v").addEventListener("click", function () {
   notification();
-})
+});
+
 function alerts() {
   alert("You have already LogIn!");
 }
 
 function notification() {
-  alert ("No new notification!")
+  alert("No new notification!");
 }
 
-document.getElementById("navbar").innerHTML=navbar();
+document.getElementById("navbar").innerHTML = navbar();
 import {navbar} from "./component/navbar.js";
 
-
-document.getElementById("q").addEventListener("click",function(){
+document.getElementById("q").addEventListener("click", function () {
   popular();
-})
+});
 
-document.getElementById("w").addEventListener("click",function(){
+document.getElementById("w").addEventListener("click", function () {
   categor();
-})
+});
 
-document.getElementById("e").addEventListener("click",function(){
+document.getElementById("e").addEventListener("click", function () {
   catego();
-})
+});
 
-document.getElementById("r").addEventListener("click",function(){
+document.getElementById("r").addEventListener("click", function () {
   categ();
-})
+});
 
-document.getElementById("t").addEventListener("click",function(){
+document.getElementById("t").addEventListener("click", function () {
   cate();
-})
+});
 
-document.getElementById("y").addEventListener("click",function(){
+document.getElementById("y").addEventListener("click", function () {
   cat();
-})
+});
 
-document.getElementById("u").addEventListener("click",function(){
+document.getElementById("u").addEventListener("click", function () {
   ca();
-})
+});
