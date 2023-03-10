@@ -1,7 +1,7 @@
 from django.urls import path
+import streaming.views
 
-from . import views
 
 urlpatterns = [
-    path('',views.index)
+
 ]

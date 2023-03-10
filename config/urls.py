@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from streaming import views
+from login.views import signup
+import streaming.views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('streaming/', views.index)
+    path('', streaming.views.mainpage, name='main'),
 ]
