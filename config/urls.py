@@ -22,4 +22,6 @@ import streaming.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', streaming.views.mainpage, name='main'),
+    path('streaming/auth', streaming.views.auth, name='signup'),
+    
 ]
