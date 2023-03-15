@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% extends 'index.html' %}
 
   {% load templates %}
 
@@ -186,6 +187,11 @@
           <a href={% template "index.html" %}>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAAtCAMAAACj8gQpAAAAkFBMVEX////+AAAAAAAYGBgLCwvGxsaWlpYEBAQcHBzAwMAjIyMfHx/k5OTo6OgQEBB/f39HR0dWVlZhYWH+TU3/7++6urr/09P+4N+rq6tpaWn39/dbW1u0tLRNTU2hoaE6Ojr/5+f+oaD+Li7+FRX+Njb+YWH+vb3R0dH+gH/+j4/+V1d1dXX/ycn+sLCLi4sxMTFTy608AAACd0lEQVRYhe2WaXPaMBCGxcqHkPD64PIBmAYapXUD///fdSXGabAxtift9ItfZjBGx6OV9hBjkyZNmjRppFar43a73VjRj+Nq9e+Z35Yvp1lLp/P319FTBWmqh/Z9aTNrvZn2SxEv6FEkWXOkjhOrIq3/cQG8gdgf3djZbEMdDgA7xhaALe4ckCsl8A/L9flQ7oMtvjd4ASJkbIe4a9mbVYWU+yr7aBnBfYadLU0PKUvGQgHBg9Guww+fXwdzj59dqcU9my6EzFmkokfD584daDh384nyc3tucE+5ndvXOfALy0OFZs9ZWOwD5sWxvnF1HHss2BeV4R5c6Sdm5otEUXVyf93v6nsDbMI4B0w1gGYxClAOTRoLWLAQwb1xXcCKBSAi4soYHOmT0ZXDQWDSxX1tnuZbi8siHqaomAaVsVgS0n6Fwqm5Pu1CANJy5SJFcojAeGOmIO/gvje57Lhscj2MQlr5geOapZz8+gnXnC9IwdaO6Yx+Vxppc+9MtlwNssT0BlojzdzL5bRIZ26Cb/0Fe2kiA8qU5YpLHxcl5h63ndtBP+J8iWhCeDCXW66M4kh2cgf4M6NzMuEzlsvBQejiDohfimBzqDWXD9/nJxqQr2rueL8K5m5XHA3IzzXXM3F06I+jHKS6xRGVxU6je+vRB9fmjb1BJooftJQ118RZEOItb0T6IlRCy1BZXqmHxcSqt/6S1uCYdL+nPCl8KsMpSAc8hDmVYNPClYQoQ+ICjwGlsbICTp/OPNl/3yDpJDFXivxSXktbb8JruWNJok0Leawur1meJiG9FkFaXm1p9Mpr9LQ4/cX71Wj9j/vkpEmTJk1q6DfA4jUzrcbdhAAAAABJRU5ErkJggg==" alt="" id="icon"/>
           </a>
+          {% block content %}
+            <h1>{{ Post.title }}</h1>
+            <p>{{ Post.content }}</p>
+            <p>{{ Post.views }}</p>
+          {% endblock content%}
         </div>
       </div>
       <div id="mid">
