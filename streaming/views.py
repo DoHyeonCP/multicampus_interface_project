@@ -34,6 +34,7 @@ def video_upload(request):
             video = fileuploadForm.save(commit=False)
             video.author = request.user
             video.create_date = timezone.now()
+            video.videofile = request.FILES["videofile"]
             fileuploadForm.save()
             return redirect('streaming:video_upload')
     else:
@@ -42,7 +43,7 @@ def video_upload(request):
     context = {
         'fileuploadForm':fileuploadForm,
     }
-    return render(request, 'video_upload.html',context)
+    return render(request, 'streaming/video_upload.html', context)
 
 
 @login_required(login_url = "common:login")
@@ -67,6 +68,7 @@ def video_modify(request, video_id):
         fileuploadForm = VideoUploadForm(instance = video)
 
     context = {'fileuploadForm': fileuploadForm}
+    
     return render(request, 'streaming/video_upload.html', context )
 
 @login_required(login_url = "common:login")

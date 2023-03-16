@@ -1,10 +1,8 @@
 {% load static %}
 {% include 'base.html' %}
 
-
 {% block content %}
 
-<body>
 <div class="content container">
     <header class="page-header" style="overflow: auto;">
         <h1 style="display: inline;">Video List</h1>
@@ -15,7 +13,7 @@
             {% for video in video_list %}
                 <a href="/streaming/{{ video.id }}">
                     <h4>{{ video.title }}</h4>
-                    <video width = "200" height = "100" autoplay>
+                    <video width = "200" height = "100" autoplay muted>
                         <source src="../media/{{ video.videofile }}" type = "video/mp4" >   
                     </video>
                 </a>
