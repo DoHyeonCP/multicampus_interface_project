@@ -13,7 +13,7 @@
             {% for video in video_list %}
                 <a href="/streaming/{{ video.id }}">
                     <h4>{{ video.title }}</h4>
-                    <video width = "200" height = "100" autoplay muted>
+                    <video width = "200" height = "100">
                         <source src="../media/{{ video.videofile }}" type = "video/mp4" >   
                     </video>
                 </a>

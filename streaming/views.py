@@ -36,7 +36,7 @@ def video_upload(request):
             video.create_date = timezone.now()
             video.videofile = request.FILES["videofile"]
             fileuploadForm.save()
-            return redirect('streaming:video_upload')
+            return redirect('streaming:list')
     else:
         fileuploadForm = VideoUploadForm()
         
