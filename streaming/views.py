@@ -63,7 +63,7 @@ def video_modify(request, video_id):
             video.author = request.user
             video.modify_date = timezone.now()
             video.save()
-            return redirect('steraming:detail', video_id = video.id)
+            return redirect('streaming:detail', video_id = video.id)
     else:
         fileuploadForm = VideoUploadForm(instance = video)
 

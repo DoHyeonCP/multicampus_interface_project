@@ -5,20 +5,22 @@
 
 <div class="content container">
     <header class="page-header" style="overflow: auto;">
-        <h1 style="display: inline;">Video List</h1>
+        <h1 style="display: inline;">영상 목록</h1>
         <a class="btn btn-default" href="video_upload/" style="float: right;">New Video</a>
     </header>
     <div class="row">
         <div class="col-md-12">
+            <hr>
             {% for video in video_list %}
                 <a href="/streaming/{{ video.id }}">
-                    <h4>{{ video.title }}</h4>
-                    <video width = "200" height = "100">
+                    <video width = "300" height = "150" float = "left">
                         <source src="../media/{{ video.videofile }}" type = "video/mp4" >   
                     </video>
+                    <div style = "float:right; font-size:2em;">{{ video.title }}</div><br>
                 </a>
-                <p>{{ video.create_date }}<p>
-                <p>{{ video.author }}<p>
+                <div style = float:right>{{ video.create_date }}</div><br>
+                <div style = float:right>{{ video.author }}</div><br>
+                <hr>
             {% endfor %}
         </div>
     </div>
