@@ -1,0 +1,31 @@
+{% load static %}
+{% include 'base.html' %}
+
+
+{% block content %}
+
+<body>
+<div class="content container">
+    <header class="page-header" style="overflow: auto;">
+        <h1 style="display: inline;">Video List</h1>
+        <a class="btn btn-default" href="video_upload/" style="float: right;">New Video</a>
+    </header>
+    <div class="row">
+        <div class="col-md-12">
+            {% for video in video_list %}
+                <a href="/streaming/{{ video.id }}">
+                    <h4>{{ video.title }}</h4>
+                    <video width = "200" height = "100" autoplay>
+                        <source src="../media/{{ video.videofile }}" type = "video/mp4" >   
+                    </video>
+                </a>
+                <p>{{ video.create_date }}<p>
+                <p>{{ video.author }}<p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+

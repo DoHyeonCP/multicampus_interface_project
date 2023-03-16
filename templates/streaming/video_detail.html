@@ -1,0 +1,32 @@
+{% include 'base.html'%}
+{% load static %}
+
+{% block content %}
+<div class="content container">
+    <header class="page-header">
+        <h1>{{ video.title }}</h1>
+        <div>
+        <video style="width:900; height:540" controls>
+            <source src="../media/{{ video.videofile }}" type = "video/mp4">   
+        </video>
+        </div>
+        {% if request.user == video.author %}
+        <div class = "my-3">
+            <a href = "{% url 'streaming:video_modify' video.id %}" class = "btn btn-sm btn-outline-secondary">수정</a>
+            <a href = "#" class = "delete btn btn-sm btn-outline-secondary" data-uri = "{% url "streaming:video_delete" video.id %}">삭제</a>
+        </div>
+        {% endif %} 
+</div>
+{% endblock%}
+{% block script %}
+<script type = 'text/javascript'>
+$(document).ready(function(){
+    $(".delete").on('click', function(){
+        if(confirm("정말로 삭제하시겠습니까?"))
+            location.href = $(this).data('uri');
+    });
+});
+</script>
+{% endblock %}
+
+

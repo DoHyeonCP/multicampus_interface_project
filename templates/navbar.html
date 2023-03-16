@@ -1,0 +1,44 @@
+{% comment %} <div id="navbar">
+    <div id="myimg">
+      <img id="bar" src="https://cdn-icons-png.flaticon.com/128/8370/8370204.png" alt="" />
+      <a href="Landingpage.html">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAAtCAMAAACj8gQpAAAAkFBMVEX////+AAAAAAAYGBgLCwvGxsaWlpYEBAQcHBzAwMAjIyMfHx/k5OTo6OgQEBB/f39HR0dWVlZhYWH+TU3/7++6urr/09P+4N+rq6tpaWn39/dbW1u0tLRNTU2hoaE6Ojr/5+f+oaD+Li7+FRX+Njb+YWH+vb3R0dH+gH/+j4/+V1d1dXX/ycn+sLCLi4sxMTFTy608AAACd0lEQVRYhe2WaXPaMBCGxcqHkPD64PIBmAYapXUD///fdSXGabAxtift9ItfZjBGx6OV9hBjkyZNmjRppFar43a73VjRj+Nq9e+Z35Yvp1lLp/P319FTBWmqh/Z9aTNrvZn2SxEv6FEkWXOkjhOrIq3/cQG8gdgf3djZbEMdDgA7xhaALe4ckCsl8A/L9flQ7oMtvjd4ASJkbIe4a9mbVYWU+yr7aBnBfYadLU0PKUvGQgHBg9Guww+fXwdzj59dqcU9my6EzFmkokfD584daDh384nyc3tucE+5ndvXOfALy0OFZs9ZWOwD5sWxvnF1HHss2BeV4R5c6Sdm5otEUXVyf93v6nsDbMI4B0w1gGYxClAOTRoLWLAQwb1xXcCKBSAi4soYHOmT0ZXDQWDSxX1tnuZbi8siHqaomAaVsVgS0n6Fwqm5Pu1CANJy5SJFcojAeGOmIO/gvje57Lhscj2MQlr5geOapZz8+gnXnC9IwdaO6Yx+Vxppc+9MtlwNssT0BlojzdzL5bRIZ26Cb/0Fe2kiA8qU5YpLHxcl5h63ndtBP+J8iWhCeDCXW66M4kh2cgf4M6NzMuEzlsvBQejiDohfimBzqDWXD9/nJxqQr2rueL8K5m5XHA3IzzXXM3F06I+jHKS6xRGVxU6je+vRB9fmjb1BJooftJQ118RZEOItb0T6IlRCy1BZXqmHxcSqt/6S1uCYdL+nPCl8KsMpSAc8hDmVYNPClYQoQ+ICjwGlsbICTp/OPNl/3yDpJDFXivxSXktbb8JruWNJok0Leawur1meJiG9FkFaXm1p9Mpr9LQ4/cX71Wj9j/vkpEmTJk1q6DfA4jUzrcbdhAAAAABJRU5ErkJggg=="
+          alt="" id="icon" />
+      </a>
+
+    </div>
+    <div id="mid">
+      <input type="text" id="query" placeholder="Search" />
+      <button onclick="searchVideos()">
+        <img src="https://cdn-icons-png.flaticon.com/128/482/482631.png" alt="" />
+      </button>
+      <img id="mic" src="https://cdn-icons-png.flaticon.com/128/7235/7235323.png" alt="" />
+    </div>
+</div>
+<hr> {% endcomment %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAAtCAMAAACj8gQpAAAAkFBMVEX////+AAAAAAAYGBgLCwvGxsaWlpYEBAQcHBzAwMAjIyMfHx/k5OTo6OgQEBB/f39HR0dWVlZhYWH+TU3/7++6urr/09P+4N+rq6tpaWn39/dbW1u0tLRNTU2hoaE6Ojr/5+f+oaD+Li7+FRX+Njb+YWH+vb3R0dH+gH/+j4/+V1d1dXX/ycn+sLCLi4sxMTFTy608AAACd0lEQVRYhe2WaXPaMBCGxcqHkPD64PIBmAYapXUD///fdSXGabAxtift9ItfZjBGx6OV9hBjkyZNmjRppFar43a73VjRj+Nq9e+Z35Yvp1lLp/P319FTBWmqh/Z9aTNrvZn2SxEv6FEkWXOkjhOrIq3/cQG8gdgf3djZbEMdDgA7xhaALe4ckCsl8A/L9flQ7oMtvjd4ASJkbIe4a9mbVYWU+yr7aBnBfYadLU0PKUvGQgHBg9Guww+fXwdzj59dqcU9my6EzFmkokfD584daDh384nyc3tucE+5ndvXOfALy0OFZs9ZWOwD5sWxvnF1HHss2BeV4R5c6Sdm5otEUXVyf93v6nsDbMI4B0w1gGYxClAOTRoLWLAQwb1xXcCKBSAi4soYHOmT0ZXDQWDSxX1tnuZbi8siHqaomAaVsVgS0n6Fwqm5Pu1CANJy5SJFcojAeGOmIO/gvje57Lhscj2MQlr5geOapZz8+gnXnC9IwdaO6Yx+Vxppc+9MtlwNssT0BlojzdzL5bRIZ26Cb/0Fe2kiA8qU5YpLHxcl5h63ndtBP+J8iWhCeDCXW66M4kh2cgf4M6NzMuEzlsvBQejiDohfimBzqDWXD9/nJxqQr2rueL8K5m5XHA3IzzXXM3F06I+jHKS6xRGVxU6je+vRB9fmjb1BJooftJQ118RZEOItb0T6IlRCy1BZXqmHxcSqt/6S1uCYdL+nPCl8KsMpSAc8hDmVYNPClYQoQ+ICjwGlsbICTp/OPNl/3yDpJDFXivxSXktbb8JruWNJok0Leawur1meJiG9FkFaXm1p9Mpr9LQ4/cX71Wj9j/vkpEmTJk1q6DfA4jUzrcbdhAAAAABJRU5ErkJggg==" alt="" id="icon">
+    <button class="navbar-toggler ml-auto" type="button" 
+        data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" 
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse  justify-content-end" id="navbarNav">
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'common:logout' %}">
+                    {{ user.username }} (로그아웃)</a>
+                {% else %}
+                <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+</nav>
