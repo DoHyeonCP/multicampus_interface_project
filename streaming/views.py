@@ -7,8 +7,9 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.contrib.sessions.backends.db import SessionStore
 from django.views.decorators.http import require_POST
-# Create your views here.
 
+
+# Create your views here.
 def video_list(request):
     """
     비디오 목록
@@ -50,6 +51,9 @@ def video_upload(request):
     return render(request, 'streaming/video_upload.html', context)
 
 
+
+        
+        
 @login_required(login_url = "common:login")
 def video_modify(request, video_id):
     """
@@ -79,6 +83,8 @@ def video_modify(request, video_id):
     
     return render(request, 'streaming/video_upload.html', context )
 
+
+        
 @login_required(login_url = "common:login")
 def video_delete(request, video_id):
     """

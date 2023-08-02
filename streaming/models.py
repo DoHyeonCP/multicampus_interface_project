@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+import os
+from django.conf import settings
 
 # Create your models here.
 class Video(models.Model):
@@ -12,6 +13,11 @@ class Video(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name='post_likes')
     view_count = models.IntegerField(default=0) # 조회수 필드
+    
+    def delete(self, *args, **kargs):
+        if self.videofile:
+            os.remove(os.path.join(settings.MEDIA_ROOT, self.videofile.path))
+        super().delete(*args, **kargs)
 
 
 
