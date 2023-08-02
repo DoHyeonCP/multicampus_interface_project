@@ -1,36 +1,63 @@
-<form action="" method="POST" enctype="multipart/form-data">
-    <input type="checkbox" id="fileChangeCheck" name="fileChange" style="display: none;">
-</form>
+{% load bootstrap4 %}
+<html>
+<head>
+    <title>Modify Video</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
 
-{% if filename %}
-<script type = "text/javascript">
-    $('[href="{{ file_url }}"]').html("{{ filename }}");
-    $('#upload_files-clear_id').css({opacity:'100', position:'relative', 'pointer-events':'auto'})
+<body>
+    <header class="page-header">
+        <h1>Modify Video</h1>
+    </header>
+    <div>
+        {% if modify %}
+            <button type="submit" class="btn btn-sm">{{ modify }}</button>
+        {% else %}
+            <button type="submit" class="btn btn-sm">작성하기</button>
+        {% endif %}
+    </div>
+    <div class="container">
+        
+        <form method="POST" action="{% url 'video_modify' video_id=video.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="checkbox" id="fileChangeCheck" name="fileChange" style="display: none;">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+    {% if video.title and video.videofile %}
+    <script type="text/javascript">
+        $('[href="{{ video.videofile.url }}"]').html("{{ video.videofile.name }}");
+        $('#upload_files-clear_id').css({opacity:'100', position:'relative', 'pointer-events':'auto'});
 
-    $("#id_upload_files").change(function() {
-        if ($('#id_upload_files').get(0).files.length == 1) {
-            $(".col-sm-12").contents().get(0).nodeValue = '[첨부파일 변경 시 기존 파일은 삭제됩니다.]'
-            $('#upload_files-clear_id').attr("checked", false)
-            $('#upload_files-clear_id').prev().hide()
-            $('#upload_files-clear_id').next().hide()
-            $('#upload_files-clear_id').hide()
-        }
-    });
+        $("#video_id").change(function() {
+            if ($('#video_id').get(0).files.length == 1) {
+                $(".col-sm-12").contents().get(0).nodeValue = '[첨부파일 변경 시 기존 파일은 삭제됩니다.]';
+                $('#upload_files-clear_id').attr("checked", false);
+                $('#upload_files-clear_id').prev().hide();
+                $('#upload_files-clear_id').next().hide();
+                $('#upload_files-clear_id').hide();
+            }
+        });
 
-    $('#upload_files-clear_id').on('click', function(){
-        if($(this).prop('checked')){
-            $('#id_upload_files').hide()
-            document.getElementById('id_upload_files').previousSibling.nodeValue = '[업로드 된 첨부파일을 삭제합니다.]'
-        } else{
-            $('#id_upload_files').show()
-            document.getElementById('id_upload_files').previousSibling.nodeValue = '변경: '
-        }
-    });
+        $('#upload_files-clear_id').on('click', function(){
+            if($(this).prop('checked')){
+                $('#video_id').hide();
+                document.getElementById('video_id').previousSibling.nodeValue = '[업로드 된 첨부파일을 삭제합니다.]';
+            } else{
+                $('#video_id').show();
+                document.getElementById('video_id').previousSibling.nodeValue = '변경: ';
+            }
+        });
 
-    $('#write').click( function() {
-        if($('#id_upload_files').get(0).files.length == 1){
-            $('#fileChangeCheck').attr("checked",true)
-        }
-    });
-</script>
-{% endif %}
+        $('button[type="submit"]').on('click', function() {
+            if ($('#video_id').get(0).files.length == 1) {
+                $('#fileChangeCheck').attr("checked", true);
+            }
+        });
+    </script>
+    {% endif %}
+</html>
+
+{% comment %} video_id=video.id {% endcomment %}

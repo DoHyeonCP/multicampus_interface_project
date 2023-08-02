@@ -8,6 +8,8 @@ from django.http import JsonResponse
 from django.contrib.sessions.backends.db import SessionStore
 from django.views.decorators.http import require_POST
 
+import os
+from django.conf import settings
 
 # Create your views here.
 def video_list(request):
@@ -49,9 +51,6 @@ def video_upload(request):
         'fileuploadForm':fileuploadForm,
     }
     return render(request, 'streaming/video_upload.html', context)
-
-
-
         
         
 @login_required(login_url = "common:login")
@@ -65,23 +64,42 @@ def video_modify(request, video_id):
         return redirect('detail', video_id = video.id)
     
     if request.method == "POST":
+        file_change_check = request.POST.get('fileChange', False)
+        file_check = request.POST.get('upload_files-clear', False)
+        
+        if file_check or file_change_check:
+            if video.videofile:
+                os.remove(os.path.join(settings.MEDIA_ROOT, video.videofile.path))
+            video.videofile = None
+            
         fileuploadForm = VideoUploadForm(request.POST, instance = video)
         if fileuploadForm.is_valid():
             video = fileuploadForm.save(commit = False)
-            
-            if 'videofile' in request.FILES:
-                video.videofile = request.Files['videofile']
-                
             video.author = request.user
             video.modify_date = timezone.now()
+            if 'videofile' in request.FILES:
+                video.videofile = request.FILES['videofile']
+            
             video.save()
             return redirect('detail', video_id = video.id)
     else:
-        fileuploadForm = VideoUploadForm(instance = video)
-
-    context = {'fileuploadForm': fileuploadForm}
+        fileuploadForm = VideoUploadForm(request.POST, instance = video)
+    context = {
+        'video' : video,
+        'form': fileuploadForm,
+        'modify': '수정하기',
+    }
+    if video.title and video.videofile:
+        context['title'] = video.title
+        context['videofile'] = video.videofile
     
-    return render(request, 'streaming/video_upload.html', context )
+    
+    
+    return render(request, "streaming/video_modify.html", context)
+    
+    
+    
+    # return redirect('streaming/detail.html', video_id = video.id)
 
 
         
