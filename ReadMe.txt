@@ -1,9 +1,4 @@
-- 영상
-1. 업로드 영상 파일만 올라갈 수 있도록
-2. 수정 시 영상 파일을 새로 업로드 해야하는 불편함
-3. 영상 크기 조절이 가능
+multitube project
 
-- 기능
-1. 좋아요 버튼 클릭 시 화면이 버튼만 작동하고 페이지 이동은 업도록
-2. 구독, 댓글 등 타 플랫폼에서 사용하는 기능들을 추가
-3. 검색 기능 구현 또는 카테고리 분류
+- 이미지 출처
+https://www.flaticon.com/kr/free-icon/tubes_6347701?term=%ED%8A%9C%EB%B8%8C&page=1&position=9&origin=search&related_id=6347701 (tube)
